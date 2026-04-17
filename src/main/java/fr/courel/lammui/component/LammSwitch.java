@@ -25,6 +25,7 @@ public class LammSwitch extends JComponent {
     private float animation = 0f;
     private Timer animTimer;
     private String label;
+    private boolean onGradient = false;
 
     public LammSwitch() {
         this(null);
@@ -58,6 +59,12 @@ public class LammSwitch extends JComponent {
         repaint();
     }
 
+    /** Active un style contrasté pour un placement sur un fond coloré (ex. LammHeader). */
+    public void setOnGradient(boolean onGradient) {
+        this.onGradient = onGradient;
+        repaint();
+    }
+
     private void animate(boolean on) {
         if (animTimer != null && animTimer.isRunning()) animTimer.stop();
         animTimer = new Timer(12, _ -> {
@@ -81,10 +88,32 @@ public class LammSwitch extends JComponent {
 
         int offsetX = 0;
 
+        // Couleurs selon contexte (normal ou sur gradient coloré)
+        Color labelColor;
+        Color trackOff;
+        Color trackOn;
+        Color thumbOff;
+        Color thumbOn;
+        Color accentColor = LammTheme.isDark() ? LammColors.LAMM_END : LammColors.PRIMARY;
+
+        if (onGradient) {
+            labelColor = Color.WHITE;
+            trackOff = new Color(255, 255, 255, 70);
+            trackOn = new Color(255, 255, 255, 140);
+            thumbOff = Color.WHITE;
+            thumbOn = Color.WHITE;
+        } else {
+            labelColor = LammColors.textPrimary();
+            trackOff = LammColors.border();
+            trackOn = LammColors.withAlpha(accentColor, 120);
+            thumbOff = LammColors.surface();
+            thumbOn = accentColor;
+        }
+
         // Label
         if (label != null) {
             g2.setFont(LammFonts.BODY);
-            g2.setColor(LammColors.textPrimary());
+            g2.setColor(labelColor);
             var fm = g2.getFontMetrics();
             g2.drawString(label, 0, (TRACK_HEIGHT + fm.getAscent() - fm.getDescent()) / 2);
             offsetX = fm.stringWidth(label) + 10;
@@ -93,11 +122,7 @@ public class LammSwitch extends JComponent {
         int trackY = 0;
 
         // Track
-        Color accentColor = LammTheme.isDark() ? LammColors.LAMM_END : LammColors.PRIMARY;
-        Color trackOff = LammColors.border();
-        Color trackOn = LammColors.withAlpha(accentColor, 120);
         Color trackColor = interpolateColor(trackOff, trackOn, animation);
-
         g2.setColor(trackColor);
         g2.fill(new RoundRectangle2D.Float(offsetX, trackY, TRACK_WIDTH, TRACK_HEIGHT,
                 TRACK_HEIGHT, TRACK_HEIGHT));
@@ -113,7 +138,7 @@ public class LammSwitch extends JComponent {
         g2.fill(new Ellipse2D.Float(thumbX, thumbY + 1, THUMB_SIZE, THUMB_SIZE));
 
         // Thumb
-        Color thumbColor = animation > 0.5f ? accentColor : LammColors.surface();
+        Color thumbColor = animation > 0.5f ? thumbOn : thumbOff;
         g2.setColor(thumbColor);
         g2.fill(new Ellipse2D.Float(thumbX, thumbY, THUMB_SIZE, THUMB_SIZE));
 

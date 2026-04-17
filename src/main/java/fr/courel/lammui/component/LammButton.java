@@ -84,6 +84,12 @@ public class LammButton extends JButton {
             pressedColor = darker(primary, 0.15f);
         }
 
+        if (flat) {
+            Color accent = LammTheme.isDark() ? LammColors.LAMM_END : LammColors.PRIMARY;
+            hoverColor = LammColors.withAlpha(accent, 20);
+            pressedColor = LammColors.withAlpha(accent, 40);
+        }
+
         Color bg = getModel().isPressed() ? pressedColor
                  : getModel().isRollover() ? hoverColor
                  : baseColor;
@@ -103,9 +109,9 @@ public class LammButton extends JButton {
         ripple.paint(g2, getWidth(), getHeight(), ARC);
         g2.dispose();
 
-        // Mettre à jour la couleur du texte pour le flat
+        // Mettre à jour la couleur du texte pour le flat (accent selon thème)
         if (flat) {
-            setForeground(LammColors.PRIMARY);
+            setForeground(LammTheme.isDark() ? LammColors.LAMM_END : LammColors.PRIMARY);
         }
         super.paintComponent(g);
     }
