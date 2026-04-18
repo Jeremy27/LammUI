@@ -14,4 +14,18 @@
         <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <scm>
+        <connection>scm:git:https://github.com/Jeremy27/LammUI.git</connection>
+        <developerConnection>scm:git:git@github.com:Jeremy27/LammUI.git</developerConnection>
+        <url>https://github.com/Jeremy27/LammUI</url>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages — Jeremy27/LammUI</name>
+            <url>https://maven.pkg.github.com/Jeremy27/LammUI</url>
+        </repository>
+    </distributionManagement>
 </project>
