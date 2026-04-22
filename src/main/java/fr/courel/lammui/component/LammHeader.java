@@ -13,7 +13,7 @@ public class LammHeader extends JPanel {
     public LammHeader() {
         super(new BorderLayout());
         setOpaque(false);
-        setBorder(BorderFactory.createEmptyBorder(14, 24, 14, 24));
+        setBorder(BorderFactory.createEmptyBorder(6, 16, 6, 4));
     }
 
     @Override
