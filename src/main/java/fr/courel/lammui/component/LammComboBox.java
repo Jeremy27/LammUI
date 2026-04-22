@@ -6,6 +6,8 @@ import fr.courel.lammui.theme.LammTheme;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicComboBoxUI;
+import javax.swing.plaf.basic.BasicComboPopup;
+import javax.swing.plaf.basic.ComboPopup;
 import java.awt.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -143,6 +145,23 @@ public class LammComboBox<E> extends JPanel {
     }
 
     private static class LammComboBoxUI extends BasicComboBoxUI {
+        @Override
+        protected ComboPopup createPopup() {
+            return new BasicComboPopup(comboBox) {
+                @Override
+                protected JScrollPane createScroller() {
+                    var sp = new JScrollPane(list,
+                            ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+                            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                    sp.setBorder(null);
+                    sp.getVerticalScrollBar().setUI(new LammScrollBarUI());
+                    sp.getVerticalScrollBar().setOpaque(false);
+                    sp.getVerticalScrollBar().setUnitIncrement(16);
+                    return sp;
+                }
+            };
+        }
+
         @Override
         public void paintCurrentValueBackground(Graphics g, Rectangle bounds, boolean hasFocus) {}
 
