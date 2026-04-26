@@ -162,6 +162,8 @@
     -fx-padding: 8 8 8 16;
     -fx-min-height: 38;
     -fx-cursor: default;
+    -fx-border-color: transparent transparent -lamm-divider transparent;
+    -fx-border-width: 0 0 1 0;
 }
 .lamm-chrome-button {
     -fx-background-color: transparent;
