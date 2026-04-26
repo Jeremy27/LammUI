@@ -643,6 +643,19 @@
     -fx-font-size: 16;
     -fx-font-weight: 600;
 }
+/* On cache l'icône système JavaFX (info/warning/error) — trop datée.
+ * graphic-container est un sibling de header-panel, pas un descendant
+ * → on cible avec descendant combinator. */
+.dialog-pane .graphic-container {
+    visibility: hidden;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-max-width: 0;
+    -fx-max-height: 0;
+    -fx-padding: 0;
+}
 .dialog-pane > .content.label,
 .dialog-pane .content {
     -fx-text-fill: -lamm-text-primary;
