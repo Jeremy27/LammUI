@@ -1,0 +1,683 @@
+/* ============================================================
+ * LammUI — feuille de style JavaFX
+ * Tokens en looked-up colors. Le dark mode bascule via la
+ * classe `dark` ajoutée sur le noeud racine (pas de reload).
+ * Accent par défaut = bleu acier ; presets via classes
+ * .accent-emerald / .accent-amber posées sur le root.
+ * ============================================================ */
+
+.root {
+    -fx-font-family: "Inter", "Poppins", "Nunito", "Roboto", "Quicksand", "System";
+
+    /* --- Palette statique (brand) --- */
+    -lamm-accent-light:  #D4A96A;
+    -lamm-accent:        #B8860B;
+    -lamm-accent-dark:   #966F09;
+    -lamm-error:         #D32F2F;
+    -lamm-success:       #388E3C;
+    -lamm-grad-start:    #1F2937;
+    -lamm-grad-end:      #4682B4;
+
+    /* --- Palette dynamique LIGHT (warm cream) --- */
+    -lamm-bg:              #F7F4EE;
+    -lamm-surface:         #FFFCF6;
+    -lamm-card:            #FFFCF6;
+    -lamm-text-primary:    #1F2937;
+    -lamm-text-secondary:  #6B6356;
+    -lamm-text-disabled:   #BDBDBD;
+    -lamm-text-on-primary: white;
+    -lamm-text-on-accent:  #1A1A2E;
+    -lamm-divider:         #ECE4D5;
+    -lamm-border:          #E5DED1;
+    -lamm-field-bg:        #FBF8F1;
+
+    /* --- Accent par défaut : bleu acier --- */
+    -lamm-primary:         #4682B4;
+    -lamm-primary-light:   #6395C2;
+    -lamm-primary-dark:    #2F5A78;
+    -lamm-primary-soft-14: rgba(70, 130, 180, 0.14);
+    -lamm-primary-soft-16: rgba(70, 130, 180, 0.16);
+    -lamm-primary-soft-24: rgba(70, 130, 180, 0.24);
+
+    -fx-background-color: -lamm-bg;
+    -fx-text-fill:        -lamm-text-primary;
+}
+
+.root.dark {
+    -lamm-bg:              #0F1622;
+    -lamm-surface:         #1E2638;
+    -lamm-card:            #1E2638;
+    -lamm-text-primary:    #F1F5F9;
+    -lamm-text-secondary:  #94A3B8;
+    -lamm-text-disabled:   #475569;
+    -lamm-text-on-primary: white;
+    -lamm-text-on-accent:  #0F1622;
+    -lamm-divider:         #2E3850;
+    -lamm-border:          #3F4A5E;
+    -lamm-field-bg:        #0F1622;
+
+    -lamm-primary:         #7AB1D6;
+    -lamm-primary-light:   #95C2DE;
+    -lamm-primary-dark:    #4F8DBE;
+    -lamm-grad-end:        #7AB1D6;
+    -lamm-grad-start:      #1A2438;
+    -lamm-primary-soft-14: rgba(122, 177, 214, 0.16);
+    -lamm-primary-soft-16: rgba(122, 177, 214, 0.18);
+    -lamm-primary-soft-24: rgba(122, 177, 214, 0.26);
+}
+
+/* ---------- Preset Émeraude ---------- */
+
+.root.accent-emerald {
+    -lamm-primary:         #10B981;
+    -lamm-primary-light:   #34D399;
+    -lamm-primary-dark:    #059669;
+    -lamm-primary-soft-14: rgba(16, 185, 129, 0.14);
+    -lamm-primary-soft-16: rgba(16, 185, 129, 0.16);
+    -lamm-primary-soft-24: rgba(16, 185, 129, 0.24);
+}
+.root.dark.accent-emerald {
+    -lamm-primary:         #34D399;
+    -lamm-primary-light:   #6EE7B7;
+    -lamm-primary-dark:    #10B981;
+    -lamm-grad-end:        #34D399;
+    -lamm-primary-soft-14: rgba(52, 211, 153, 0.16);
+    -lamm-primary-soft-16: rgba(52, 211, 153, 0.18);
+    -lamm-primary-soft-24: rgba(52, 211, 153, 0.26);
+}
+
+/* ---------- Preset Ambre ---------- */
+
+.root.accent-amber {
+    -lamm-primary:         #B45309;
+    -lamm-primary-light:   #D97706;
+    -lamm-primary-dark:    #92400E;
+    -lamm-primary-soft-14: rgba(180, 83, 9, 0.14);
+    -lamm-primary-soft-16: rgba(180, 83, 9, 0.16);
+    -lamm-primary-soft-24: rgba(180, 83, 9, 0.24);
+}
+.root.dark.accent-amber {
+    -lamm-primary:         #F59E0B;
+    -lamm-primary-light:   #FBBF24;
+    -lamm-primary-dark:    #D97706;
+    -lamm-grad-end:        #F59E0B;
+    -lamm-primary-soft-14: rgba(245, 158, 11, 0.16);
+    -lamm-primary-soft-16: rgba(245, 158, 11, 0.18);
+    -lamm-primary-soft-24: rgba(245, 158, 11, 0.26);
+}
+
+.label {
+    -fx-text-fill: -lamm-text-primary;
+}
+
+/* ---------- Bouton ---------- */
+
+.lamm-button {
+    -fx-background-color:  -lamm-surface;
+    -fx-text-fill:         -lamm-text-primary;
+    -fx-border-color:      -lamm-border;
+    -fx-border-radius:     8;
+    -fx-background-radius: 8;
+    -fx-padding:           9 18;
+    -fx-font-weight:       bold;
+    -fx-cursor:            hand;
+}
+.lamm-button:hover {
+    -fx-background-color: derive(-lamm-surface, -8%);
+}
+.lamm-button:pressed {
+    -fx-background-color: derive(-lamm-surface, -14%);
+}
+
+.lamm-button-primary {
+    -fx-background-color: -lamm-primary;
+    -fx-text-fill:        -lamm-text-on-primary;
+    -fx-border-color:     transparent;
+}
+.lamm-button-primary:hover {
+    -fx-background-color: -lamm-primary-dark;
+}
+.lamm-button-primary:pressed {
+    -fx-background-color: derive(-lamm-primary-dark, -10%);
+}
+
+.lamm-button-accent {
+    -fx-background-color: -lamm-accent;
+    -fx-text-fill:        -lamm-text-on-accent;
+    -fx-border-color:     transparent;
+}
+.lamm-button-accent:hover {
+    -fx-background-color: -lamm-accent-dark;
+}
+.lamm-button-accent:pressed {
+    -fx-background-color: derive(-lamm-accent-dark, -10%);
+}
+
+/* ---------- Chrome (fenêtre UNDECORATED) ---------- */
+
+.lamm-chrome {
+    -fx-background-color: -lamm-bg;
+}
+.lamm-chrome-titlebar {
+    -fx-padding: 8 8 8 16;
+    -fx-min-height: 38;
+    -fx-cursor: default;
+}
+.lamm-chrome-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 6 12;
+    -fx-min-width: 38;
+    -fx-min-height: 28;
+    -fx-cursor: hand;
+    -fx-background-radius: 4;
+}
+.lamm-chrome-button:hover {
+    -fx-background-color: derive(-lamm-bg, -10%);
+}
+.root.dark .lamm-chrome-button:hover {
+    -fx-background-color: derive(-lamm-bg, 18%);
+}
+.lamm-chrome-button-close:hover {
+    -fx-background-color: -lamm-error;
+}
+.lamm-chrome-icon {
+    -fx-stroke: -lamm-text-secondary;
+    -fx-fill: -lamm-text-secondary;
+}
+.lamm-chrome-icon-fill {
+    -fx-fill: -lamm-text-secondary;
+    -fx-stroke: transparent;
+}
+.lamm-chrome-button:hover .lamm-chrome-icon {
+    -fx-stroke: -lamm-text-primary;
+    -fx-fill: -lamm-text-primary;
+}
+.lamm-chrome-button:hover .lamm-chrome-icon-fill {
+    -fx-fill: -lamm-text-primary;
+}
+.lamm-chrome-button-close:hover .lamm-chrome-icon,
+.lamm-chrome-button-close:hover .lamm-chrome-icon-fill {
+    -fx-stroke: white;
+    -fx-fill: white;
+}
+
+/* ---------- Header (inversé : flat + ligne d'accent) ---------- */
+
+.lamm-header {
+    -fx-background-color: -lamm-bg;
+    -fx-padding: 22 20 14 20;
+    -fx-alignment: center-left;
+    -fx-spacing: 0;
+    -fx-border-color: transparent transparent -lamm-primary transparent;
+    -fx-border-width: 0 0 2 0;
+}
+.lamm-header-title-bold {
+    -fx-text-fill: -lamm-text-primary;
+    -fx-font-weight: 700;
+    -fx-font-size: 22;
+}
+.lamm-header-title-light {
+    -fx-text-fill: -lamm-text-secondary;
+    -fx-font-weight: normal;
+    -fx-font-size: 17;
+}
+
+/* ---------- Card (modernisée : shadow + radius) ---------- */
+
+.lamm-card {
+    -fx-background-color:  -lamm-card;
+    -fx-border-color:      transparent;
+    -fx-border-width:      0;
+    -fx-padding:           18 20;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(60, 50, 30, 0.10), 14, 0.0, 0, 3);
+}
+.root.dark .lamm-card {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.45), 16, 0.0, 0, 3);
+}
+.lamm-card-title {
+    -fx-text-fill:   -lamm-text-primary;
+    -fx-font-weight: 600;
+    -fx-font-size:   14;
+    -fx-padding:     0 0 2 0;
+}
+.lamm-card-separator {
+    -fx-background-color: -lamm-divider;
+    -fx-pref-height: 1;
+    -fx-min-height:  1;
+    -fx-max-height:  1;
+    -fx-opacity:     0.7;
+}
+
+/* ---------- TextField (label flottant Materialize) ---------- */
+
+.lamm-tf {
+    -fx-padding: 16 0 4 0;
+}
+.lamm-tf-input,
+.lamm-tf-input:focused {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-text-fill: -lamm-text-primary;
+    -fx-prompt-text-fill: transparent;
+    -fx-font-size: 14;
+    -fx-padding: 6 0;
+    -fx-border-color: -lamm-border;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-radius: 0;
+}
+.lamm-tf-input:focused {
+    -fx-border-color: -lamm-primary;
+}
+.lamm-tf-label {
+    -fx-text-fill: -lamm-text-secondary;
+    -fx-font-size: 14;
+    -fx-padding: 6 0 0 0;
+}
+.lamm-tf-label.floated {
+    -fx-text-fill: -lamm-primary;
+}
+
+/* ---------- ProgressBar ---------- */
+
+.lamm-progress {
+    -fx-pref-height: 6;
+    -fx-min-height: 6;
+    -fx-max-height: 6;
+    -fx-padding: 0;
+}
+.lamm-progress > .track {
+    -fx-background-color: -lamm-divider;
+    -fx-background-radius: 3;
+    -fx-background-insets: 0;
+}
+.lamm-progress > .bar {
+    -fx-background-color: -lamm-primary;
+    -fx-background-radius: 3;
+    -fx-background-insets: 0;
+    -fx-padding: 3;
+}
+
+/* ---------- TreeView ---------- */
+
+.lamm-tree {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 4;
+    -fx-fixed-cell-size: 28;
+}
+.lamm-tree > .virtual-flow {
+    -fx-background-color: transparent;
+}
+.lamm-tree .tree-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -lamm-text-primary;
+    -fx-padding: 0 8;
+    -fx-graphic-text-gap: 8;
+}
+.lamm-tree .tree-cell:filled:hover {
+    -fx-background-color: derive(-lamm-surface, -4%);
+    -fx-background-radius: 6;
+}
+.root.dark .lamm-tree .tree-cell:filled:hover {
+    -fx-background-color: derive(-lamm-surface, 12%);
+}
+.lamm-tree .tree-cell:filled:selected,
+.lamm-tree .tree-cell:filled:selected:focused {
+    -fx-background-color: -lamm-primary-soft-14;
+    -fx-background-radius: 6;
+    -fx-text-fill: -lamm-primary;
+}
+.lamm-tree .tree-cell .tree-disclosure-node .arrow {
+    -fx-background-color: -lamm-text-secondary;
+}
+
+/* Icônes file/folder/folder-open dessinées en JavaFX */
+.lamm-tree-icon-file-outline {
+    -fx-fill: transparent;
+    -fx-stroke: -lamm-text-secondary;
+    -fx-stroke-width: 1.2;
+}
+.lamm-tree-icon-file-line {
+    -fx-stroke: -lamm-text-secondary;
+    -fx-stroke-width: 0.8;
+}
+.lamm-tree-icon-folder-fill {
+    -fx-fill:   -lamm-primary-soft-16;
+    -fx-stroke: -lamm-primary;
+    -fx-stroke-width: 1.2;
+}
+.lamm-tree-icon-folder-open-tab {
+    -fx-fill:   -lamm-primary-soft-24;
+    -fx-stroke: -lamm-primary;
+    -fx-stroke-width: 1.2;
+}
+.lamm-tree-icon-folder-open-body {
+    -fx-fill:   -lamm-primary-soft-16;
+    -fx-stroke: -lamm-primary;
+    -fx-stroke-width: 1.2;
+}
+
+/* ---------- Switch ---------- */
+
+.lamm-switch {
+    -fx-cursor: hand;
+}
+.lamm-switch-track {
+    -fx-fill: -lamm-border;
+}
+.lamm-switch:on .lamm-switch-track {
+    -fx-fill: -lamm-primary;
+}
+.lamm-switch-thumb {
+    -fx-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.18), 3, 0.0, 0, 1);
+}
+.lamm-switch-label {
+    -fx-text-fill: -lamm-text-primary;
+}
+
+/* ---------- Spinner (Materialize) ---------- */
+
+.lamm-spinner-label {
+    -fx-text-fill: -lamm-text-secondary;
+    -fx-font-size: 12;
+    -fx-padding: 0 0 2 4;
+}
+.lamm-spinner-label.focused {
+    -fx-text-fill: -lamm-primary;
+}
+.lamm-spinner-input {
+    -fx-background-color: transparent;
+    -fx-border-color: -lamm-border;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0;
+}
+.lamm-spinner-input:focused {
+    -fx-border-color: -lamm-primary;
+}
+.lamm-spinner-input > .text-field {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 4 4;
+    -fx-text-fill: -lamm-text-primary;
+}
+.lamm-spinner-input > .increment-arrow-button,
+.lamm-spinner-input > .decrement-arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 2 6;
+}
+.lamm-spinner-input > .increment-arrow-button:hover,
+.lamm-spinner-input > .decrement-arrow-button:hover {
+    -fx-background-color: -lamm-primary-soft-14;
+}
+.lamm-spinner-input > .increment-arrow-button > .increment-arrow,
+.lamm-spinner-input > .decrement-arrow-button > .decrement-arrow {
+    -fx-background-color: -lamm-text-secondary;
+}
+.lamm-spinner-input > .increment-arrow-button:hover > .increment-arrow,
+.lamm-spinner-input > .decrement-arrow-button:hover > .decrement-arrow {
+    -fx-background-color: -lamm-primary;
+}
+
+/* ---------- CheckBox ---------- */
+
+.check-box {
+    -fx-text-fill: -lamm-text-primary;
+}
+.check-box > .box {
+    -fx-background-color: -lamm-field-bg;
+    -fx-border-color: -lamm-border;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 2;
+}
+.check-box:hover > .box {
+    -fx-border-color: -lamm-primary-light;
+}
+.check-box:focused > .box {
+    -fx-border-color: -lamm-primary;
+}
+.check-box:selected > .box {
+    -fx-background-color: -lamm-primary;
+    -fx-border-color: -lamm-primary;
+}
+.check-box:selected > .box > .mark {
+    -fx-background-color: -lamm-text-on-primary;
+}
+
+/* ---------- RadioButton ---------- */
+
+.radio-button {
+    -fx-text-fill: -lamm-text-primary;
+}
+.radio-button > .radio {
+    -fx-background-color: -lamm-field-bg;
+    -fx-border-color: -lamm-border;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 99;
+    -fx-background-radius: 99;
+    -fx-padding: 4;
+}
+.radio-button:hover > .radio {
+    -fx-border-color: -lamm-primary-light;
+}
+.radio-button:focused > .radio,
+.radio-button:selected > .radio {
+    -fx-border-color: -lamm-primary;
+}
+.radio-button:selected > .radio > .dot {
+    -fx-background-color: -lamm-primary;
+    -fx-background-radius: 99;
+    -fx-padding: 3;
+}
+
+/* ---------- ScrollPane ---------- */
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-pane > .corner {
+    -fx-background-color: transparent;
+}
+
+/* Barres de scroll discrètes (utilisées par scroll-pane, list-view, tree-view, text-area) */
+.scroll-bar:horizontal,
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+.scroll-bar > .thumb {
+    -fx-background-color: -lamm-border;
+    -fx-background-radius: 4;
+    -fx-background-insets: 2;
+}
+.scroll-bar > .thumb:hover {
+    -fx-background-color: -lamm-text-secondary;
+}
+.scroll-bar > .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+.scroll-bar > .increment-arrow,
+.scroll-bar > .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* ---------- TextArea ---------- */
+
+.text-area {
+    -fx-background-color: -lamm-field-bg;
+    -fx-background-radius: 8;
+    -fx-border-color: -lamm-border;
+    -fx-border-radius: 8;
+    -fx-text-fill: -lamm-text-primary;
+}
+.text-area:focused {
+    -fx-border-color: -lamm-primary;
+}
+.text-area .content {
+    -fx-background-color: transparent;
+}
+.text-area .text {
+    -fx-fill: -lamm-text-primary;
+}
+
+/* ---------- Title (équivalent FX du LammTitle Swing) ---------- */
+
+.lamm-title {
+    -fx-text-fill: -lamm-text-primary;
+    -fx-font-size: 22;
+    -fx-font-weight: 700;
+}
+.lamm-subtitle {
+    -fx-text-fill: -lamm-text-secondary;
+    -fx-font-size: 14;
+}
+
+/* ---------- ComboBox ---------- */
+
+.combo-box-base {
+    -fx-background-color:  -lamm-field-bg;
+    -fx-background-radius: 8;
+    -fx-border-color:      -lamm-border;
+    -fx-border-radius:     8;
+    -fx-border-width:      1;
+}
+.combo-box-base:focused {
+    -fx-border-color: -lamm-primary;
+}
+.combo-box .list-cell {
+    -fx-text-fill:        -lamm-text-primary;
+    -fx-background-color: transparent;
+    -fx-padding:          4 8;
+}
+.combo-box-popup .list-view {
+    -fx-background-color:  -lamm-surface;
+    -fx-background-radius: 8;
+    -fx-border-color:      -lamm-border;
+    -fx-border-radius:     8;
+    -fx-effect: dropshadow(gaussian, rgba(60, 50, 30, 0.18), 16, 0.0, 0, 4);
+}
+.combo-box-popup .list-view .list-cell {
+    -fx-text-fill:        -lamm-text-primary;
+    -fx-background-color: transparent;
+    -fx-padding:          6 10;
+}
+.combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color: derive(-lamm-surface, -6%);
+    -fx-text-fill:        -lamm-text-primary;
+}
+.root.dark .combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color: derive(-lamm-surface, 12%);
+}
+.combo-box-popup .list-view .list-cell:filled:selected {
+    -fx-background-color: -lamm-primary-soft-16;
+    -fx-text-fill:        -lamm-primary;
+}
+
+/* ---------- ContextMenu (cog + sous-menus) ---------- */
+
+.context-menu {
+    -fx-background-color:  -lamm-surface;
+    -fx-background-radius: 8;
+    -fx-border-color:      -lamm-border;
+    -fx-border-radius:     8;
+    -fx-padding:           4;
+    -fx-effect: dropshadow(gaussian, rgba(60, 50, 30, 0.18), 16, 0.0, 0, 4);
+}
+.root.dark .context-menu {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.45), 18, 0.0, 0, 4);
+}
+.context-menu .menu-item {
+    -fx-padding: 6 16 6 8;
+    -fx-background-radius: 4;
+}
+.context-menu .menu-item .label {
+    -fx-text-fill: -lamm-text-primary;
+}
+.context-menu .menu-item:focused {
+    -fx-background-color: -lamm-primary-soft-14;
+}
+.context-menu .menu-item:focused .label {
+    -fx-text-fill: -lamm-primary;
+}
+.context-menu .radio-menu-item:checked > .left-container > .radio {
+    -fx-background-color: -lamm-primary;
+}
+.context-menu .menu-item .arrow {
+    -fx-background-color: -lamm-text-secondary;
+}
+.context-menu .menu-item:focused .arrow {
+    -fx-background-color: -lamm-primary;
+}
+
+/* ---------- Dialog (Alert : confirmations, erreurs, info) ---------- */
+
+.dialog-pane {
+    -fx-background-color: -lamm-bg;
+    -fx-padding: 16;
+}
+.dialog-pane > .header-panel {
+    -fx-background-color: -lamm-surface;
+    -fx-padding: 14 16;
+    -fx-background-radius: 8;
+}
+.dialog-pane > .header-panel > .label {
+    -fx-text-fill: -lamm-text-primary;
+    -fx-font-size: 16;
+    -fx-font-weight: 600;
+}
+.dialog-pane > .content.label,
+.dialog-pane .content {
+    -fx-text-fill: -lamm-text-primary;
+    -fx-font-size: 13;
+    -fx-padding: 12 4;
+}
+.dialog-pane .label {
+    -fx-text-fill: -lamm-text-primary;
+}
+.dialog-pane .button-bar .container {
+    -fx-padding: 8 0 0 0;
+}
+.dialog-pane .button {
+    -fx-background-color: -lamm-primary;
+    -fx-text-fill: -lamm-text-on-primary;
+    -fx-border-color: transparent;
+    -fx-background-radius: 8;
+    -fx-padding: 9 18;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.dialog-pane .button:hover {
+    -fx-background-color: -lamm-primary-dark;
+}
+.dialog-pane .button:default {
+    -fx-background-color: -lamm-primary;
+}
+.dialog-pane .button:cancel-button {
+    -fx-background-color: -lamm-surface;
+    -fx-text-fill: -lamm-text-primary;
+    -fx-border-color: -lamm-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+.dialog-pane .button:cancel-button:hover {
+    -fx-background-color: derive(-lamm-surface, -6%);
+}
+.root.dark .dialog-pane .button:cancel-button:hover {
+    -fx-background-color: derive(-lamm-surface, 12%);
+}
